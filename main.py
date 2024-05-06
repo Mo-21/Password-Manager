@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
+from password_generator import generate_password
 # Save Passwords ----------------
 
 
@@ -18,6 +19,11 @@ def add_password():
             website_entry.delete(0, END)
             email_entry.delete(0, END)
             password_entry.delete(0, END)
+
+
+def on_generate_click():
+    password = generate_password()
+    password_entry.insert(END, password)
 
 
 # UI Related ----------------
@@ -51,7 +57,7 @@ password_entry = Entry(width=21)
 password_entry.grid(row=3, column=1)
 
 # Buttons
-generate_btn = Button(text="Generate Password", width=14)
+generate_btn = Button(text="Generate Password", width=14, command=on_generate_click)
 generate_btn.grid(row=3, column=2)
 
 add_btn = Button(text="Add Password", command=add_password)
