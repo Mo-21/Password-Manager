@@ -9,8 +9,12 @@ def add_password():
         "email": email_entry.get(),
         "password": password_entry.get()
     }
-    with open(file="passwords.txt", mode="w") as file:
-        file.writelines(f"{password["website"]} | {password["email"]} | {password["password"]}")
+    with open(file="passwords.txt", mode="a") as file:
+        file.write(f"\n{password["website"]} | {password["email"]} | {password["password"]}")
+
+    website_entry.delete(0, END)
+    email_entry.delete(0, END)
+    password_entry.delete(0, END)
 
 
 # UI Related ----------------
